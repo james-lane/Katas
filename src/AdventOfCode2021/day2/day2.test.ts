@@ -1,4 +1,4 @@
-import { part1 } from './day2'
+import { part1, part2 } from './day2'
 
 const puzzleInput = `forward 3
 down 4
@@ -1015,5 +1015,22 @@ describe('part1', () => {
 
   it('should pass puzzle', () => {
     expect(part1(puzzleInput)).toEqual(2150351)
+  })
+})
+
+describe('part2', () => {
+  it('should pass example test', () => {
+    expect(
+      part2(`forward 5
+      down 5
+      forward 8
+      up 3
+      down 8
+      forward 2`),
+    ).toEqual(900)
+  })
+
+  it('should pass puzzle', () => {
+    expect(part2(puzzleInput)).toEqual(1842742223)
   })
 })
