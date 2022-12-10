@@ -1,12 +1,9 @@
 export const part1 = (input: string) => {
   const strategyGuide = input.split('\n')
 
-  const A = 1,
-    B = 2,
-    C = 3,
-    X = 1,
-    Y = 2,
-    Z = 3,
+  const rock = 1,
+    paper = 2,
+    scissors = 3,
     win = 6,
     draw = 3,
     loss = 0
@@ -14,15 +11,15 @@ export const part1 = (input: string) => {
   const roundScore = (round: string) => {
     const moves = round.split(' ')
 
-    if (moves[0] === 'A' && moves[1] === 'X') return X + draw
-    if (moves[0] === 'B' && moves[1] === 'X') return X + loss
-    if (moves[0] === 'C' && moves[1] === 'X') return X + win
-    if (moves[0] === 'A' && moves[1] === 'Y') return Y + win
-    if (moves[0] === 'B' && moves[1] === 'Y') return Y + draw
-    if (moves[0] === 'C' && moves[1] === 'Y') return Y + loss
-    if (moves[0] === 'A' && moves[1] === 'Z') return Z + loss
-    if (moves[0] === 'B' && moves[1] === 'Z') return Z + win
-    if (moves[0] === 'C' && moves[1] === 'Z') return Z + draw
+    if (moves[0] === 'A' && moves[1] === 'X') return rock + draw
+    if (moves[0] === 'B' && moves[1] === 'X') return rock + loss
+    if (moves[0] === 'C' && moves[1] === 'X') return rock + win
+    if (moves[0] === 'A' && moves[1] === 'Y') return paper + win
+    if (moves[0] === 'B' && moves[1] === 'Y') return paper + draw
+    if (moves[0] === 'C' && moves[1] === 'Y') return paper + loss
+    if (moves[0] === 'A' && moves[1] === 'Z') return scissors + loss
+    if (moves[0] === 'B' && moves[1] === 'Z') return scissors + win
+    if (moves[0] === 'C' && moves[1] === 'Z') return scissors + draw
 
     return 0
   }
@@ -37,10 +34,7 @@ export const part1 = (input: string) => {
 export const part2 = (input: string) => {
   const strategyGuide = input.split('\n')
 
-  const A = 1,
-    B = 2,
-    C = 3,
-    rock = 1,
+  const rock = 1,
     paper = 2,
     scissors = 3,
     win = 6,
