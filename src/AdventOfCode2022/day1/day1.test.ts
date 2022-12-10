@@ -1,4 +1,4 @@
-import { part1 } from './day1'
+import { part1, part2 } from './day1'
 
 const exampleInput = `1000
 2000
@@ -2279,5 +2279,15 @@ describe('part1', () => {
 
     expect(elf.id).toEqual(35)
     expect(elf.calories).toEqual(71780)
+  })
+})
+
+describe('part2', () => {
+  it('should pass example test', () => {
+    expect(part2(exampleInput)).toEqual(45000)
+  })
+
+  it('should return puzzle answer', () => {
+    expect(part2(puzzleInput)).toEqual(212489)
   })
 })
