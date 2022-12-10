@@ -1,12 +1,12 @@
+const rock = 1,
+  paper = 2,
+  scissors = 3,
+  win = 6,
+  draw = 3,
+  loss = 0
+
 export const part1 = (input: string) => {
   const strategyGuide = input.split('\n')
-
-  const rock = 1,
-    paper = 2,
-    scissors = 3,
-    win = 6,
-    draw = 3,
-    loss = 0
 
   const roundScore = (round: string) => {
     const moves = round.split(' ')
@@ -33,13 +33,6 @@ export const part1 = (input: string) => {
 
 export const part2 = (input: string) => {
   const strategyGuide = input.split('\n')
-
-  const rock = 1,
-    paper = 2,
-    scissors = 3,
-    win = 6,
-    draw = 3,
-    loss = 0
 
   const roundScore = (round: string) => {
     const moves = round.split(' ')
