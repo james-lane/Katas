@@ -1,4 +1,4 @@
-import { part1, containsTheOther } from './solution'
+import { part1, containsTheOther, part2, overlapsTheOther } from './solution'
 
 const exampleInput = `2-4,6-8
 2-3,4-5
@@ -1021,6 +1021,18 @@ describe('containsTheOther', () => {
   })
 })
 
+describe('overlapsTheOther', () => {
+  it('should return true if one is contained in the other', () => {
+    expect(overlapsTheOther(['5-7', '7-9'])).toEqual(true)
+    expect(overlapsTheOther(['7-9', '5-7'])).toEqual(true)
+    expect(overlapsTheOther(['2-8', '3-7'])).toEqual(true)
+    expect(overlapsTheOther(['3-7', '2-8'])).toEqual(true)
+    expect(overlapsTheOther(['6-6', '6-6'])).toEqual(true)
+    expect(overlapsTheOther(['2-6', '4-8'])).toEqual(true)
+    expect(overlapsTheOther(['4-8', '2-6'])).toEqual(true)
+  })
+})
+
 describe('part1', () => {
   it('should pass example test', () => {
     expect(part1(exampleInput)).toEqual(2)
@@ -1031,12 +1043,12 @@ describe('part1', () => {
   })
 })
 
-// describe('part2', () => {
-//   it('should pass example test', () => {
-//     expect(part2(exampleInput)).toEqual(70)
-//   })
+describe('part2', () => {
+  it('should pass example test', () => {
+    expect(part2(exampleInput)).toEqual(4)
+  })
 
-//   it('should return puzzle answer', () => {
-//     expect(part2(puzzleInput)).toEqual(2838)
-//   })
-// })
+  it('should return puzzle answer', () => {
+    expect(part2(puzzleInput)).toEqual(833)
+  })
+})

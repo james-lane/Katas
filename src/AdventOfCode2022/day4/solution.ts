@@ -14,6 +14,17 @@ export const containsTheOther = (pairs: string[]) => {
   return true
 }
 
+export const overlapsTheOther = (pairs: string[]) => {
+  const numberPairs: number[][] = []
+
+  pairs.forEach((area) => numberPairs.push(convertToNumbers(area)))
+
+  if (numberPairs[0][0] < numberPairs[1][0] && numberPairs[0][1] < numberPairs[1][0]) return false
+  if (numberPairs[0][0] > numberPairs[1][1] && numberPairs[0][1] > numberPairs[1][1]) return false
+
+  return true
+}
+
 export const part1 = (input: string) => {
   const pairsArr = input.split('\n')
   let pairs: string[][] = []
@@ -23,6 +34,20 @@ export const part1 = (input: string) => {
 
   pairs.forEach((pair) => {
     if (containsTheOther(pair)) count += 1
+  })
+
+  return count
+}
+
+export const part2 = (input: string) => {
+  const pairsArr = input.split('\n')
+  let pairs: string[][] = []
+  let count = 0
+
+  pairsArr.forEach((pair) => pairs.push(pair.split(',')))
+
+  pairs.forEach((pair) => {
+    if (overlapsTheOther(pair)) count += 1
   })
 
   return count
