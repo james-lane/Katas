@@ -1,4 +1,4 @@
-import { itemInBothComparments, part1, priorityCalc } from './solution'
+import { itemInBothComparments, part1, priorityCalc, part2, itemInAllRucksacks } from './solution'
 
 const exampleInput = `vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
@@ -323,6 +323,12 @@ describe('compartmentCheck', () => {
   })
 })
 
+describe('rucksackCheck', () => {
+  it('should return the character found in all 3 rucksacks', () => {
+    expect(itemInAllRucksacks(['abCdef', 'ghijkC', 'lmnopC'])).toEqual('C')
+  })
+})
+
 describe('part1', () => {
   it('should pass example test', () => {
     expect(part1(exampleInput)).toEqual(157)
@@ -330,5 +336,15 @@ describe('part1', () => {
 
   it('should return puzzle answer', () => {
     expect(part1(puzzleInput)).toEqual(7908)
+  })
+})
+
+describe('part2', () => {
+  it('should pass example test', () => {
+    expect(part2(exampleInput)).toEqual(70)
+  })
+
+  it('should return puzzle answer', () => {
+    expect(part2(puzzleInput)).toEqual(2838)
   })
 })
