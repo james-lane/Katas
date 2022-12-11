@@ -1,4 +1,4 @@
-import { part1, part2 } from './day1'
+import { part1, part2 } from './solution'
 
 const exampleInput = `1000
 2000
