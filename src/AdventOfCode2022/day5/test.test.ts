@@ -1,4 +1,4 @@
-import { part1, applyInstruction } from './solution'
+import { part1, part2, applyInstruction } from './solution'
 
 const exampleInput = `    [D]    
 [N] [C]    
@@ -551,12 +551,12 @@ describe('part1', () => {
   })
 })
 
-// describe('part2', () => {
-//   it('should pass example test', () => {
-//     expect(part2(exampleInput)).toEqual(4)
-//   })
+describe('part2', () => {
+  it('should pass example test', () => {
+    expect(part2(exampleInput)).toEqual('MCD')
+  })
 
-//   it('should return puzzle answer', () => {
-//     expect(part2(puzzleInput)).toEqual(833)
-//   })
-// })
+  it('should return puzzle answer', () => {
+    expect(part2(puzzleInput)).toEqual('JNRSCDWPP')
+  })
+})

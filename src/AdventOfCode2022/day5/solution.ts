@@ -54,20 +54,20 @@ export const transposeCrateAllocation = (input: string[][]): string[][] => {
   return transposedAllocation
 }
 
-export const applyInstruction = (crateAllocation: string[][], prodedure: Procedure) => {
+export const applyInstruction = (crateAllocation: string[][], prodedure: Procedure, reverse: boolean) => {
   let crates = crateAllocation
   const cratesToMove = crates[prodedure.fromIndex].splice(-prodedure.amount, prodedure.amount)
 
-  crates[prodedure.toIndex].push(...cratesToMove.reverse())
+  reverse ? crates[prodedure.toIndex].push(...cratesToMove.reverse()) : crates[prodedure.toIndex].push(...cratesToMove)
 
   return crates
 }
 
-export const generateMessage = (crates: string[][], procedure: Procedure[]) => {
+export const generateMessage = (crates: string[][], procedure: Procedure[], reverse: boolean = true) => {
   let newCrateAllocation = crates
 
   procedure.forEach((procedure) => {
-    newCrateAllocation = applyInstruction(newCrateAllocation, procedure)
+    newCrateAllocation = applyInstruction(newCrateAllocation, procedure, reverse)
   })
 
   let message: string[] = []
@@ -89,4 +89,15 @@ export const part1 = (input: string) => {
   const transposedCrateAllocation = transposeCrateAllocation(crateAllocation)
 
   return generateMessage(transposedCrateAllocation, crateProcedure)
+}
+
+export const part2 = (input: string) => {
+  const allocationAndProcedure = input.split('\n\n')
+
+  const crateAllocation = allocationToArray(allocationAndProcedure[0])
+  const crateProcedure = formatProcedure(allocationAndProcedure[1])
+
+  const transposedCrateAllocation = transposeCrateAllocation(crateAllocation)
+
+  return generateMessage(transposedCrateAllocation, crateProcedure, false)
 }
