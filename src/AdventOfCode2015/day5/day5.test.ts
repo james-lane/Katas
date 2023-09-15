@@ -1,4 +1,14 @@
-import { part1, part2, containAtLeastThreeVowels, appearsTwice, isSafeString } from './day5'
+import {
+  part1,
+  part2,
+  containAtLeastThreeVowels,
+  appearsTwice,
+  isSafeString,
+  containsMoreThanOnePair,
+  isOverlap,
+  containsOneLetterBetween,
+  hasOneLetterBetween,
+} from './day5'
 
 const puzzleInput = `sszojmmrrkwuftyv
 isaljhemltsdzlum
@@ -1039,7 +1049,103 @@ describe('day 5 part 1', () => {
 })
 
 describe('day 5 part 2', () => {
-  it('should return true for given string', () => {
+  it('should return 1 for given string', () => {
     expect(part2('qjhvhtzxzqqjkmpb')).toEqual(1)
+  })
+
+  it('should return 1 for given string', () => {
+    expect(part2('xxyxx')).toEqual(1)
+  })
+
+  it('should return 1 for given string', () => {
+    expect(part2('abcdexyxab')).toEqual(1)
+    expect(part2('ababcde')).toEqual(1)
+    expect(part2('aaaa')).toEqual(1)
+  })
+
+  it('should return 2 for given strings', () => {
+    expect(
+      part2(`qjhvhtzxzqqjkmpb
+xxyxx
+uurcxstgmygtbstg
+ieodomkazucvgmuy`),
+    ).toEqual(2)
+  })
+
+  it('should return 2 for given strings', () => {
+    expect(
+      part2(`qjhvhtzxzqqjkmpb
+xxyxx
+uurcxstgmygtbstg
+ieodomkazucvgmuy`),
+    ).toEqual(2)
+  })
+
+  it('should return 0 for given string', () => {
+    expect(part2('uurcxstgmygtbstg')).toEqual(0)
+  })
+
+  it('should return 0 for given string', () => {
+    expect(part2('ieodomkazucvgmuy')).toEqual(0)
+  })
+
+  it('should return count of nice string for puzzle input', () => {
+    expect(part2(puzzleInput)).toEqual(55)
+  })
+})
+
+describe('containsMoreThanOnePair', () => {
+  it('should return true when there is more than one pair', () => {
+    expect(containsMoreThanOnePair('afaf')).toEqual(true)
+  })
+  it('should return true when there is more than one pair', () => {
+    expect(containsMoreThanOnePair('aaaa')).toEqual(true)
+  })
+  it('should return false when there is less than one pair', () => {
+    const input = 'abc'
+
+    expect(containsMoreThanOnePair(input)).toEqual(false)
+  })
+  it('should return false when there is one pair', () => {
+    const input = 'aabc'
+
+    expect(containsMoreThanOnePair(input)).toEqual(false)
+  })
+  it('should return false if the matching pair overlaps', () => {
+    const input = 'aaa'
+
+    expect(containsMoreThanOnePair(input)).toEqual(false)
+  })
+})
+
+describe('isOverlap', () => {
+  it('should return false when pair characters are not the same', () => {
+    expect(isOverlap('abcdefg', 'ab')).toEqual(false)
+  })
+  it.each(['aaa', 'aaab'])('should return true when given %s and aa', (input) => {
+    expect(isOverlap(input, 'aa')).toBe(true)
+  })
+  it.each(['aaaa', 'aabaa'])('should return false when given %s and aa', (input) => {
+    expect(isOverlap(input, 'aa')).toBe(false)
+  })
+})
+
+describe('containsOneLetterBetween', () => {
+  it('should return true when input contains triples', () => {
+    expect(containsOneLetterBetween('aabbccdccddee')).toEqual(true)
+  })
+  it('should return false when does not contain triples', () => {
+    expect(containsOneLetterBetween('bsdfkjhasdafklhasdfkjhaskldfhs')).toEqual(false)
+  })
+})
+
+describe('hasOneLetterBetween', () => {
+  it('should return true when a triple has one letter between', () => {
+    expect(hasOneLetterBetween('aaa')).toEqual(true)
+    expect(hasOneLetterBetween('aba')).toEqual(true)
+  })
+
+  it('should return false when first and last letter dont match', () => {
+    expect(hasOneLetterBetween('aab')).toEqual(false)
   })
 })
