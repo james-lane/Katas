@@ -1417,7 +1417,7 @@ describe('part1', () => {
   })
 })
 
-describe.only('part2', () => {
+describe('part2', () => {
   it('should pass example test', () => {
     expect(part2(exampleInput)).toEqual(123)
   })
